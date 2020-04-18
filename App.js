@@ -8,6 +8,8 @@ import store from '~/store';
 
 import Navigation from '~/routes';
 
+console.disableYellowBox = true;
+
 const App = () => (
   <Provider store={store}>
     <Navigation />

@@ -1,9 +1,10 @@
 import React from 'react';
-import {Image} from 'react-native';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
+import {MenuButton} from '~/components';
 import Intro from '~/screens/Intro';
 import Main from '~/screens/Main';
 import Residents from '~/screens/Residents';
@@ -16,18 +17,14 @@ const Drawer = createDrawerNavigator();
 const MainNavigator = () => {
   return (
     <Stack.Navigator
-      screenOptions={{
+      screenOptions={({navigation}) => ({
         headerLeftContainerStyle: {
           paddingHorizontal: su(14),
         },
         headerLeft: () => (
-          <Image
-            style={{width: su(50), height: su(50)}}
-            source={require('~assets/images/logo.png')}
-            resizeMode="contain"
-          />
+          <MenuButton onPress={() => navigation.openDrawer()} />
         ),
-      }}>
+      })}>
       <Stack.Screen
         name="Home"
         component={Main}
@@ -42,18 +39,14 @@ const MainNavigator = () => {
 const ResidentsNavigator = () => {
   return (
     <Stack.Navigator
-      screenOptions={{
+      screenOptions={({navigation}) => ({
         headerLeftContainerStyle: {
           paddingHorizontal: su(14),
         },
         headerLeft: () => (
-          <Image
-            style={{width: su(50), height: su(50)}}
-            source={require('~assets/images/logo.png')}
-            resizeMode="contain"
-          />
+          <MenuButton onPress={() => navigation.openDrawer()} />
         ),
-      }}>
+      })}>
       <Stack.Screen
         name="Residents"
         component={Residents}

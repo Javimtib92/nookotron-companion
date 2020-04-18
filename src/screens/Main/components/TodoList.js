@@ -69,6 +69,7 @@ const TodoListHeader = ({completed = 0, total = 0}) => {
     <Flex justify="center">
       {[...Array(total)].map((_, index) => (
         <ProgressTrackItem
+          key={index}
           completed={index < completed}
           completedColor={completedColor}
         />
@@ -97,6 +98,7 @@ const TodoList = () => {
         renderItem={({item}) => (
           <TodoListItem item={item} onChange={onItemChange} />
         )}
+        keyExtractor={item => item.key}
       />
     </Container>
   );
