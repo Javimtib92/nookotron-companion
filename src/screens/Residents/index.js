@@ -2,11 +2,11 @@ import React from 'react';
 
 import {Text, StyleSheet, View} from 'react-native';
 
-const styles = StyleSheet.create({});
+import IslandVillagers from './components/IslandVillagersList';
 
 const Residents = ({navigation}) => (
   <View>
-    <Text>Residents</Text>
+    <IslandVillagers />
   </View>
 );
 

@@ -3,11 +3,17 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "start": "react-native start",
+    "ios": "react-native run-ios",
+    "ios-pod-install": "cd ios && pod install",
+    "ios-bundle": "react-native bundle --entry-file='index.ios.js' --bundle-output='./ios/digitalcare100/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
+    "android": "react-native run-android",
+    "android-bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/build/assets",
+    "android-release": "cd android && ./gradlew assembleRelease",
+    "android-debug": "cd android && ./gradlew assembleDebug",
+    "postinstall": "npx jetify"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
@@ -21,6 +27,7 @@
     "prop-types": "^15.7.2",
     "react": "16.11.0",
     "react-native": "0.62.2",
+    "react-native-fast-image": "^8.1.5",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-reanimated": "^1.8.0",
     "react-native-safe-area-context": "^0.7.3",
