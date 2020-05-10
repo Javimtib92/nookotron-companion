@@ -1,66 +1,57 @@
 import React from 'react';
 
-import {
-  Text,
-  Button,
-  Image,
-  StyleSheet,
-  Dimensions,
-  ImageBackground,
-  StatusBar,
-} from 'react-native';
+import {Button, Dimensions, StatusBar} from 'react-native';
 
-import {Spacing, Flex} from '~/components';
+import styled from 'styled-components';
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    flex: 1,
-    paddingHorizontal: 20,
-  },
-  fileName: {
-    fontWeight: 'bold',
-    marginTop: 5,
-  },
-  instructions: {
-    color: '#000',
-    fontWeight: 'bold',
-    fontSize: 14,
-    marginTop: 20,
-    textAlign: 'center',
-  },
-  logo: {
-    height: Dimensions.get('window').height * 0.11,
-    marginVertical: Dimensions.get('window').height * 0.11,
-    width: Dimensions.get('window').height * 0.11 * (1950 / 662),
-  },
-  welcome: {
-    color: '#000',
-    fontSize: 22,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  backgroundImageStyle: {
+import {su} from '~/utils';
+import {Spacing, Flex} from '~components';
+
+const Container = styled.ImageBackground.attrs({
+  source: require('~assets/images/landing.jpeg'),
+  imageStyle: {
     opacity: 0.3,
   },
-});
+  resizeMode: 'cover',
+})`
+  align-items: center;
+  flex: 1;
+  padding-right: ${su(20)};
+  padding-left: ${su(20)};
+`;
+
+const Logo = styled.Image.attrs({
+  source: require('~assets/images/logo.png'),
+  resizeMode: 'contain',
+  window: Dimensions.get('window'),
+})`
+  height: ${p => su(p.window.height * 0.11)};
+  margin-top: ${p => su(p.window.height * 0.11)};
+  margin-bottom: ${p => su(p.window.height * 0.11)};
+  width: ${p => su(p.window.height * 0.11 * (1950 / 662))};
+`;
+
+const WelcomeText = styled.Text`
+  color: #000;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+`;
+
+const InstructionsText = styled.Text`
+  color: #000;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: ${p => su(p.marginTop || 20)};
+  text-align: center;
+`;
 
 const Intro = ({navigation}) => (
-  <ImageBackground
-    source={require('~assets/images/landing.jpeg')}
-    style={styles.container}
-    imageStyle={styles.backgroundImageStyle}
-    resizeMode="cover">
+  <Container>
     <StatusBar barStyle="light-content" backgroundColor="#5d99c6" />
-    <Image
-      source={require('~assets/images/logo.png')}
-      style={styles.logo}
-      resizeMode="contain"
-    />
-    <Text style={styles.welcome}>Bienvenidos a Nookotron!</Text>
-    <Text style={styles.instructions}>
-      Gestiona todos los elementos de tu isla
-    </Text>
+    <Logo />
+    <WelcomeText>Bienvenidos a Nookotron!</WelcomeText>
+    <InstructionsText>Gestiona todos los elementos de tu isla</InstructionsText>
 
     <Spacing y="60" />
 
@@ -74,10 +65,10 @@ const Intro = ({navigation}) => (
     <Spacing y="140" />
 
     <Flex dir="column" align="center">
-      <Text style={styles.instructions}>Una producción de Juvisland</Text>
-      <Text style={[styles.instructions, styles.fileName]}>Javier ❤ Júlia</Text>
+      <InstructionsText>Una producción de Juvisland</InstructionsText>
+      <InstructionsText marginTop={su(5)}>Javier ❤ Júlia</InstructionsText>
     </Flex>
-  </ImageBackground>
+  </Container>
 );
 
 export default Intro;

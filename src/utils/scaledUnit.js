@@ -15,6 +15,7 @@ if (!scaleLower && scale < 1) {
   scale = 1;
 }
 
-const su = v => Math.round(parseFloat(v, 10) * scale * precision) / precision;
+const su = v =>
+  String(Math.round(parseFloat(v, 10) * scale * precision) / precision) + 'px';
 
 export default su;

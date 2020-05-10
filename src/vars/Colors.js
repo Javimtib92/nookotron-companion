@@ -1,3 +1,5 @@
+import {StyleSheet} from 'react-native';
+
 const toRGB = hex => {
   if (!hex) {
     return 'transparent';
@@ -26,6 +28,8 @@ const Colors = {
   gray: '#74768A',
   grayDark: '#5D5F77',
   grayBlack: '#171A3D',
+
+  divider: StyleSheet.hairlineWidth < 1 ? '#bcbbc1' : 'rgba(0, 0, 0, 0.12)',
 
   rgba: (color, opacity) => `rgba(${toRGB(color)}, ${opacity})`,
 };

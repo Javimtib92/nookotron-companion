@@ -31,7 +31,7 @@ const Icon = ({
       <IconWrapper {...props}>
         <FontAwesomeIcon
           icon={icon}
-          size={scale(size)}
+          size={size}
           color={Colors[color] || color}
         />
       </IconWrapper>

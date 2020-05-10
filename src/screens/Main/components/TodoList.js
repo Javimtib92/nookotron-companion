@@ -1,15 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import {Dimensions, FlatList, Text} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
-import {Flex, Spacing} from '~/components';
+import {Flex, Spacing} from '~components';
 import TodoListMock from '~/mock/todo-list';
 import {su} from '~/utils';
 import {Colors} from '~/vars';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
+
+const window = Dimensions.get('window');
 
 const Container = styled.View`
   background-color: ${Colors.white};
-  height: ${Dimensions.get('window').height}
+  height: ${su(window.height)}
   padding-vertical: ${su(14)};
 `;
 

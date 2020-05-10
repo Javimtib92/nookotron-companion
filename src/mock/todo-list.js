@@ -1,7 +1,7 @@
 export default [
   {
     key: '1',
-    title: 'Hablar con los residentes',
+    title: 'Hablar con los vecinos',
   },
   {
     key: '2',
