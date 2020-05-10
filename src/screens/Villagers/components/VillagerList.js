@@ -51,7 +51,8 @@ const VillagerInfo = React.memo(
 const VillagerItem = ({villager, navigation}) => {
   return (
     <View>
-      <TouchableHighlight onPress={() => navigation.navigate('Details')}>
+      <TouchableHighlight
+        onPress={() => navigation.navigate('Details', {villager})}>
         <VillagerItemContainer>
           <VillagerAvatarContainer>
             <VillagerAvatar source={villager.thumb} />

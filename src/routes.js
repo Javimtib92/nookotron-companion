@@ -62,9 +62,9 @@ const ResidentsNavigator = () => {
       <Stack.Screen
         name="Details"
         component={VillagerDetails}
-        options={{
-          headerTitle: 'Details',
-        }}
+        options={({route}) => ({
+          headerTitle: route.params.villager.name,
+        })}
       />
     </Stack.Navigator>
   );

@@ -5,3 +5,4 @@ export {default as Text} from './Text';
 export {default as Icon} from './Icon';
 export {default as TouchableHighlight} from './TouchableHighlight';
 export {default as MenuButton} from './MenuButton';
+export {default as Blockquote} from './Blockquote';
