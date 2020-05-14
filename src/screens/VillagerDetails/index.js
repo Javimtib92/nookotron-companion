@@ -51,10 +51,13 @@ const VillagerDetails = ({route}) => {
           </View>
         </Flex>
       </Body>
-      <Blockquote
-        borderColor={`rgb(${villager.villager_dominant_color.join(',')})`}
-        quote={villager.initial_phrase}
-      />
+      {villager.initial_phrase && villager.initial_phrase !== '' ? (
+        <Blockquote
+          borderColor={`rgb(${villager.villager_dominant_color.join(',')})`}
+          quote={villager.initial_phrase}
+        />
+      ) : null}
+
       <Body style={{height: '100%'}} />
     </Container>
   );
