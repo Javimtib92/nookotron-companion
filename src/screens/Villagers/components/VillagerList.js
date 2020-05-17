@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {FlatList, View} from 'react-native';
+import {Divider} from 'react-native-elements';
 import FastImage from 'react-native-fast-image';
-import {Text, Flex, Divider, TouchableHighlight} from '~components';
+import {Text, Flex, TouchableHighlight} from '~components';
 import VillagersListMock from '~/mock/villagers';
 import {su} from '~/utils';
 import {Colors} from '~/vars';
@@ -73,7 +74,7 @@ const Container = styled.View`
   background-color: ${Colors.white};
 `;
 
-const VillagersList = props => {
+const VillagersList = ({search, ...props}) => {
   const [villagers, setVillagers] = React.useState([]);
 
   React.useEffect(() => {
@@ -81,6 +82,17 @@ const VillagersList = props => {
       VillagersListMock.sort((a, b) => a.name.localeCompare(b.name)),
     );
   }, []);
+
+  React.useEffect(() => {
+    setVillagers(
+      VillagersListMock.sort((a, b) => a.name.localeCompare(b.name)).filter(
+        villager =>
+          villager.name.toLowerCase().startsWith(search.toLowerCase()) ||
+          villager.species.toLowerCase().startsWith(search.toLowerCase()) ||
+          villager.personality.toLowerCase().startsWith(search.toLowerCase()),
+      ),
+    );
+  }, [search]);
 
   return (
     <Container>

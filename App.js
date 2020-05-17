@@ -1,19 +1,21 @@
 import 'react-native-gesture-handler';
-import React from 'react';
-
 import '~/config/ReactotronConfig';
-
-import {Provider} from 'react-redux';
-import store from '~/store';
-
+import * as React from 'react';
+import {ThemeProvider} from 'react-native-elements';
 import Navigation from '~/routes';
 
 console.disableYellowBox = true;
 
+const theme = {
+  Button: {
+    raised: true,
+  },
+};
+
 const App = () => (
-  <Provider store={store}>
+  <ThemeProvider theme={theme}>
     <Navigation />
-  </Provider>
+  </ThemeProvider>
 );
 
 export default App;

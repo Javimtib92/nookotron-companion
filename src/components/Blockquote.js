@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {su} from '~/utils';
 import Icon from '~components/Icon';
 import Flex from '~components/Flex';
 
@@ -8,7 +7,7 @@ const Container = styled.View.attrs(p => ({
   borderColor: p.borderColor,
 }))`
   border-left-color: ${p => p.borderColor};
-  border-left-width: 10;
+  border-left-width: 10px;
   padding: 16px;
 `;
 

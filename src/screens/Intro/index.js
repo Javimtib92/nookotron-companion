@@ -1,11 +1,33 @@
-import React from 'react';
-
-import {Button, Dimensions, StatusBar} from 'react-native';
-
+import * as React from 'react';
 import styled from 'styled-components';
-
-import {su} from '~/utils';
+import {Button, Dimensions, StatusBar} from 'react-native';
 import {Spacing, Flex} from '~components';
+import {su} from '~/utils';
+
+const Intro = ({navigation}) => (
+  <Container>
+    <StatusBar barStyle="light-content" backgroundColor="#5d99c6" />
+    <Logo />
+    <WelcomeText>Bienvenidos a Nookotron!</WelcomeText>
+    <InstructionsText>Gestiona todos los elementos de tu isla</InstructionsText>
+
+    <Spacing y="60" />
+
+    <Button
+      onPress={() => navigation.navigate('Drawer', {screen: 'Home'})}
+      title="Empieza"
+      color="#90caf9"
+      accessibilityLabel="Haz click aquí para empezar"
+    />
+
+    <Spacing y="140" />
+
+    <Flex dir="column" align="center">
+      <InstructionsText>Una producción de Juvisland</InstructionsText>
+      <InstructionsText marginTop={su(5)}>Javier ❤ Júlia</InstructionsText>
+    </Flex>
+  </Container>
+);
 
 const Container = styled.ImageBackground.attrs({
   source: require('~assets/images/landing.jpeg'),
@@ -45,30 +67,5 @@ const InstructionsText = styled.Text`
   margin-top: ${p => su(p.marginTop || 20)};
   text-align: center;
 `;
-
-const Intro = ({navigation}) => (
-  <Container>
-    <StatusBar barStyle="light-content" backgroundColor="#5d99c6" />
-    <Logo />
-    <WelcomeText>Bienvenidos a Nookotron!</WelcomeText>
-    <InstructionsText>Gestiona todos los elementos de tu isla</InstructionsText>
-
-    <Spacing y="60" />
-
-    <Button
-      onPress={() => navigation.navigate('Drawer', {screen: 'Home'})}
-      title="Empieza"
-      color="#90caf9"
-      accessibilityLabel="Haz click aquí para empezar"
-    />
-
-    <Spacing y="140" />
-
-    <Flex dir="column" align="center">
-      <InstructionsText>Una producción de Juvisland</InstructionsText>
-      <InstructionsText marginTop={su(5)}>Javier ❤ Júlia</InstructionsText>
-    </Flex>
-  </Container>
-);
 
 export default Intro;

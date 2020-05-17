@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import {View} from 'react-native';
-import {SearchBar} from '~components';
+import {Platform, View} from 'react-native';
+import {SearchBar} from 'react-native-elements';
 import VillagersList from './components/VillagerList';
 
 const Residents = props => {
@@ -9,11 +9,13 @@ const Residents = props => {
   return (
     <View>
       <SearchBar
+        lightTheme
         placeholder="Type Here..."
         onChangeText={updateSearch}
         value={search}
+        platform={Platform.OS === 'android' ? 'android' : 'ios'}
       />
-      <VillagersList {...props} />
+      <VillagersList {...props} search={search} />
     </View>
   );
 };
